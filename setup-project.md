@@ -64,5 +64,45 @@ polls/
     tests.py
     views.py
 ```
+## 🎒 - Database Setup
+First, ensure PostgreSQL is installed by checking the version with the command
+```bash
+postgres --version
+```
+Expected output
+```
+postgres (PostgreSQL) 15.0
+```
+Next, install the Postgres Client psycopg2:
+```
+pip install psycopg2
+pip install psycopg2-binary
+```
+Then, open the `quiz/settings.py` file and locate the section:
+```bash
+# Database
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
+```
+Modify it to use PostgreSQL as follows
+```bash
+# Database
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "mypolls",
+        "USER": "db_username",
+        "PASSWORD": "password",
+        "HOST": "localhost",
+        "PORT": "5432",
+    }
+}
+```
